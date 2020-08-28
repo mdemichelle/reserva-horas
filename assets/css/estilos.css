@@ -1,0 +1,88 @@
+body{
+    box-sizing: border-box;
+    background: linear-gradient(90deg, #6dad94 10%, #6b3f16 90%);
+}
+
+
+.seccion-form{
+    display: flex;
+   
+    flex-direction: column;
+    
+}
+
+.titulo{
+    color: white;
+    font-size: 2.375rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 2.5rem;
+    align-self: center;
+}
+
+.form-class{
+    border: #fff solid 1px;
+    padding:15px;
+    align-self: center;
+    width: 40%;
+    height: auto;
+    -webkit-box-shadow: 7px 7px 12px -1px rgba(0,0,0,0.23);
+    -moz-box-shadow: 7px 7px 12px -1px rgba(0,0,0,0.23);
+    box-shadow: 7px 7px 12px -1px rgba(0,0,0,0.23);
+}
+.container{
+    display: flex;
+    flex-direction: column;
+   
+    
+}
+label{
+    color: #fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top:10px;
+    font-size: 18px;
+    margin-left: 10%;
+
+}
+
+.inputcss{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid;
+    width: 80%;
+    padding:5px;
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 16px;
+    align-self: center;
+}
+
+.content-select{
+    width: 100%;
+    padding:10px;
+    margin-left: 8%;
+    
+}
+.content-select select{
+	appearance: none;
+  background-color: none;
+
+}
+
+.btn-enviar{
+
+    text-decoration: none;
+    width: 50%;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:#fff;
+    background: none;
+    align-self: center;
+    margin: 10px;
+}
+
+.btn-enviar:hover{
+    opacity: 0.5;
+    color: black;
+}

@@ -3,9 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/estilos.css">
   <title>Document</title>
 </head>
 <body>
-  
+ 
+  <section class="seccion-form">
+   <h1 class="titulo">RESERVA TU HORA</h1>
+   <form class="form-class" method="GET" id="formulario" action="">
+    <div class="container">
+      <label for="rut"> Rut del paciente </label>
+      <input
+          type="text"
+          id="rut"
+          name="rut"
+          placeholder="Ej. 11.111.111-2"
+          class="inputcss"
+        />
+        <label for="nombres"> Nombres</label>
+        <input
+          type="text"
+          id="nombres"
+          name="nombres"
+          placeholder=""
+          class="inputcss"
+      />
+      <label for="apellidos"> Apellidos</label>
+      <input
+          type="text"
+          id="apellidos"
+          name="apellidos"
+          placeholder=""
+          class="inputcss"
+        />
+        <label for="edad"> Edad</label>
+        <input
+          type="text"
+          id="edad"
+          name="edad"
+          placeholder=""
+          class="inputcss"
+        />
+
+        <label for="correo"> Correo</label>
+        <input
+          type="text"
+          id="correo"
+          name="correo"
+          placeholder=""
+          class="inputcss"
+        />
+
+        <label for="especialidad"> Especialidad</label>
+      <div class="content-select">
+        <select name="especialidad" id="especialidad" class="inputcss">
+          <option value="0" selected disabled>Seleccione...</option>
+          <option value="traumatologia">Traumatología</option>
+          <option value="radiologia">Radiología</option>
+          <option value="dental">Dental</option>
+        </select>
+      </div>
+      <label for="fecha">Fecha</label>
+      <input
+          type="text"
+          id="fecha"
+          name="fecha"
+          placeholder="Ej. 31/01/2020"
+          class="inputcss"
+        />
+      <label for="hora">Hora</label> 
+      <div class="content-select">
+        <select name="hora" id="hora" class="inputcss">
+          <option value="0" selected disabled>Seleccione...</option>
+          <option value="1">09:30</option>
+          <option value="2">09:30</option>
+          <option value="3">09:30</option>
+        </select>
+      </div>
+      <input type="submit" value="Reservar" class="btn-enviar" />
+   
+    </div>
+   </form>
+  </section>
 </body>
 </html>
