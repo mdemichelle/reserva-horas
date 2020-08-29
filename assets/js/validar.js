@@ -44,7 +44,7 @@ formulario.addEventListener("submit", e=>{
 
 rutValidacion = () => {
     var rut = document.getElementById("rut").value;
-    var expresion = /^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$/gm;
+    var expresion = /^\d{1,2}\.\d{3}\.\d{3}[-][\dkK]{1}$/gm;
         if(rut===""){
             Swal.fire("El campo es obligatorio, por favor ingresa un RUT.");
             return false;
