@@ -1,16 +1,21 @@
-//obteniendo los datos desde el ID
+//obteniendo el formulario desde el ID:
 var formulario = document.getElementById("formulario");
-var especialidad=document.getElementById("especialidad").value;
-var fecha=document.getElementById("fecha").value;
-var hora=document.getElementById("hora").value;
 
-
+//Validaciones se realizan al momento de hacer clic en el boton tipo submit:
 formulario.addEventListener("submit", e=>{
+   //Obtengo los datos desde el ID del elemento 
     var rut = document.getElementById("rut").value;
     var nombres = document.getElementById("nombres").value;
     var apellidos=document.getElementById("apellidos").value;
+    var correo=document.getElementById("correo").value;
+    var especialidad=document.getElementById("especialidad").value;
+    var fecha=document.getElementById("fecha").value;
+    var hora=document.getElementById("hora").value;
+
+  //Evitar que envie el formulario
     e.preventDefault();
 
+    //Comprobando: si la validacion es falsa, retorna falso. Si es verdadera pasa a la siguiente.
     if(rutValidacion()==false){
         return false;
     }else if( nombreValidacion()==false){
@@ -21,8 +26,16 @@ formulario.addEventListener("submit", e=>{
         return false;
     }else if(correoValidacion()==false){
         return false;
+    }else if(especialidad=="0")   {
+        Swal.fire("El campo es obligatorio, por favor selecciona una ESPECIALIDAD.");
+    }else if(fechaValidacion()==false){
+        return false;
+    }else if(hora=="0"){
+        Swal.fire("El campo es obligatorio, por favor selecciona una HORA.");
     } else{
-        alert("su nombre: " +nombres + "rut: "+rut+"apellido: "+apellidos); 
+        Swal.fire(`Estimado(a) ${nombres} ${apellidos}, su hora para ${especialidad} ha sido reservada para el
+                    día ${fecha} a las ${hora}. Además, se le envió un mensaje a su correo ${correo} con el detalle de su cita.
+                        ¡Gracias por preferirnos!`); 
         limpiar();
     }
 });
@@ -32,15 +45,11 @@ formulario.addEventListener("submit", e=>{
 rutValidacion = () => {
     var rut = document.getElementById("rut").value;
     var expresion = /^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$/gm;
-
         if(rut===""){
             Swal.fire("El campo es obligatorio, por favor ingresa un RUT.");
             return false;
-
         }else if(!rut.match(expresion)){
-            Swal.fire('El formato del RUT no es válido, por favor intenta nuevamente.');
-            
-            
+            Swal.fire('El formato del RUT no es válido, por favor intenta nuevamente.');  
             return false;
         }
         console.log("RUT: "+ rut);
@@ -55,10 +64,8 @@ rutValidacion = () => {
     if(nombres===""){
         Swal.fire("El campo es obligatorio, por favor ingresa NOMBRES.");
         return false;
-
     }else if(!nombres.match(expresion)){
-        Swal.fire('Debe ingresar sólo letras, por favor intenta nuevamente.');
-       
+        Swal.fire('Debe ingresar sólo letras, por favor intenta nuevamente.');  
         return false;
     }
         console.log("NOMBRES: "+ nombres);
@@ -72,10 +79,8 @@ rutValidacion = () => {
         if(apellidos===""){
             Swal.fire("El campo es obligatorio, por favor ingresa APELLIDOS.");
             return false;
-
         }else if(!apellidos.match(expresion)){
-            Swal.fire('Debe ingresar solo letras, por favor intenta nuevamente.');
-           
+            Swal.fire('Debe ingresar solo letras, por favor intenta nuevamente.');          
             return false;
         }
         console.log("APELLIDOS: "+ apellidos);
@@ -89,10 +94,8 @@ rutValidacion = () => {
         if(edad===""){
             Swal.fire("El campo es obligatorio, por favor ingresa una EDAD.");
             return false;
-
         }else if(!edad.match(expresion)){
-            Swal.fire('Debe ingresar sólo números, por favor intenta nuevamente.');
-            
+            Swal.fire('Debe ingresar sólo números, por favor intenta nuevamente.');         
             return false;
         }
         console.log("EDAD: "+ edad);
@@ -105,7 +108,6 @@ rutValidacion = () => {
         if(correo===""){
             Swal.fire("El campo es obligatorio, por favor ingresa un CORREO.");
             return false;
-
         }else if(!correo.match(expresion)){
             Swal.fire('El formato del correo no es válido, por favor intenta nuevamente.');
             return false;
@@ -113,7 +115,20 @@ rutValidacion = () => {
         console.log("CORREO: "+ correo);
         return true;
     }
-
+//---------------Fecha: campo de texto. (validar que sea una fecha en formato dd-mm-yyyy)-----------------
+    fechaValidacion = () => {
+        var fecha=document.getElementById("fecha").value;
+        var expresion = /^([0][1-9]|[12][0-9]|3[01])(\/|-)([0][1-9]|[1][0-2])\2(\d{4})$/;
+        if(fecha===""){
+            Swal.fire("El campo es obligatorio, por favor ingresa una FECHA.");
+            return false;
+        }else if(!fecha.match(expresion)){
+            Swal.fire('El formato de la fecha no es válida, por favor intenta nuevamente.');
+            return false;
+        }
+        console.log("FECHA: "+ fecha);
+        return true;
+    }
 //----------------------------------------Limpiar inputs---------------------------------------------------
 limpiar = () =>{
     var rut = document.getElementById("rut");
