@@ -11,15 +11,20 @@ var hora=document.getElementById("hora").value;
 
 
 formulario.addEventListener("submit", e=>{
-   
+    var rut = document.getElementById("rut").value;
+    var nombres = document.getElementById("nombres").value;
+    var apellidos=document.getElementById("apellidos").value;
     e.preventDefault();
 
     if(rutValidacion()==false){
         return false;
     }else if( nombreValidacion()==false){
         return false;
+    }else if(apellidoValidacion()==false){
+        return false;
     } else{
-        alert("su nombre: " +nombres + "rut: "+rut); 
+        alert("su nombre: " +nombres + "rut: "+rut+"apellido: "+apellidos); 
+        limpiar();
     }
   
     
@@ -51,17 +56,54 @@ rutValidacion = () => {
 //----------------------------Validacion Nombre: campo de texto. (validar que contenga sólo letras)------------------------------------------
    nombreValidacion = () => {
     var nombres =document.getElementById("nombres").value;
-    var expresion = /^[a-zA-Z]{3,15}\s[a-zA-Z]{3,15}$/gmi;
-
+    var expresion = /^[a-zA-Z ]*$/;
+    // var exp = /^[a-zA-Z]{3,15}\s[a-zA-Z]{3,15}$/gmi;
     if(nombres===""){
         Swal.fire("El campo es obligatorio, por favor ingresa tus NOMBRES");
         return false;
 
     }else if(!nombres.match(expresion)){
-        Swal.fire('El formato del NOMBRE no es válido, por favor intenta nuevamente');
+        Swal.fire('El formato no es válido, por favor intenta nuevamente');
         console.log(nombres);
         return false;
     }
     return true;
 }
 
+//---------------------------Validación Apellidos: campo de texto. (validar que contenga sólo letras)---------
+apellidoValidacion = () => {
+    var apellidos=document.getElementById("apellidos").value;
+    var expresion = /^[a-zA-Z ]*$/;
+    if(apellidos===""){
+        Swal.fire("El campo es obligatorio, por favor ingresa tus APELLIDOS");
+        return false;
+
+    }else if(!apellidos.match(expresion)){
+        Swal.fire('El formato no es válido, por favor intenta nuevamente');
+        console.log(apellidos);
+        return false;
+    }
+    return true;
+}
+
+
+//----------------------------Limpiar inputs-------------------------------------------------
+limpiar = () =>{
+    var rut = document.getElementById("rut");
+    var nombres = document.getElementById("nombres");
+    var apellidos=document.getElementById("apellidos");
+    var edad=document.getElementById("edad");
+    var correo=document.getElementById("correo");
+    var especialidad=document.getElementById("especialidad");
+    var fecha=document.getElementById("fecha");
+    var hora=document.getElementById("hora");
+
+    rut.value="";
+    nombres.value="";
+    apellidos.value="";
+    edad.value="";
+    correo.value="";
+    especialidad.value="0";
+    fecha.value="";
+    hora.value="0";
+}
